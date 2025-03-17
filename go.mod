@@ -1,4 +1,4 @@
-module behemoth-pkg
+module github.com/BehemothLtd/behemoth-pkg
 
 go 1.23.5
 

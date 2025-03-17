@@ -1,9 +1,10 @@
 package databases
 
 import (
-	"behemoth-pkg/golang/utils"
 	"os"
 	"time"
+
+	"github.com/BehemothLtd/behemoth-pkg/golang/utils"
 
 	"github.com/rs/zerolog/log"
 	"github.com/truongkma/gormzerolog"

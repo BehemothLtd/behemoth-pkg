@@ -1,11 +1,12 @@
 package pagination
 
 import (
-	"behemoth-pkg/golang/exceptions"
-	translator "behemoth-pkg/golang/translators"
 	"context"
 	"fmt"
 	"math"
+
+	"github.com/BehemothLtd/behemoth-pkg/golang/exceptions"
+	translator "github.com/BehemothLtd/behemoth-pkg/golang/translators"
 
 	"github.com/rs/zerolog/log"
 	"gorm.io/gorm"

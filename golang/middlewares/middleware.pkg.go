@@ -1,11 +1,12 @@
 package middlewares
 
 import (
-	"behemoth-pkg/golang/constants"
-	"behemoth-pkg/golang/cookies"
-	"behemoth-pkg/golang/jwts"
-	translator "behemoth-pkg/golang/translators"
 	"context"
+
+	"github.com/BehemothLtd/behemoth-pkg/golang/constants"
+	"github.com/BehemothLtd/behemoth-pkg/golang/cookies"
+	"github.com/BehemothLtd/behemoth-pkg/golang/jwts"
+	translator "github.com/BehemothLtd/behemoth-pkg/golang/translators"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"

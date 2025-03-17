@@ -1,8 +1,9 @@
 package exceptions
 
 import (
-	translator "behemoth-pkg/golang/translators"
 	"fmt"
+
+	translator "github.com/BehemothLtd/behemoth-pkg/golang/translators"
 )
 
 const (

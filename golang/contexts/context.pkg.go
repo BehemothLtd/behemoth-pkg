@@ -1,11 +1,12 @@
 package contexts
 
 import (
-	"behemoth-pkg/golang/constants"
-	"behemoth-pkg/golang/exceptions"
 	"context"
 	"errors"
 	"fmt"
+
+	"github.com/BehemothLtd/behemoth-pkg/golang/constants"
+	"github.com/BehemothLtd/behemoth-pkg/golang/exceptions"
 
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"

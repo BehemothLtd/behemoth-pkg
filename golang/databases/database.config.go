@@ -1,11 +1,12 @@
 package databases
 
 import (
-	"behemoth-pkg/golang/utils"
 	"context"
 	"fmt"
 	"strconv"
 	"time"
+
+	"github.com/BehemothLtd/behemoth-pkg/golang/utils"
 
 	"github.com/rs/zerolog/log"
 	"gorm.io/gorm"

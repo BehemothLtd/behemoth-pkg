@@ -1,10 +1,11 @@
 package loggers
 
 import (
-	"behemoth-pkg/golang/constants"
-	"behemoth-pkg/golang/utils"
 	"io"
 	"strings"
+
+	"github.com/BehemothLtd/behemoth-pkg/golang/constants"
+	"github.com/BehemothLtd/behemoth-pkg/golang/utils"
 
 	"github.com/rs/zerolog"
 )

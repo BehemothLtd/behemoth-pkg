@@ -1,10 +1,10 @@
 package config
 
 import (
-	"behemoth-pkg/golang/utils"
 	"net/url"
 	"strings"
 
+	"github.com/BehemothLtd/behemoth-pkg/golang/utils"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"

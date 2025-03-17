@@ -1,10 +1,10 @@
 package jwts
 
 import (
-	"behemoth-pkg/golang/constants"
-	"behemoth-pkg/golang/cookies"
-	"behemoth-pkg/golang/exceptions"
-	"behemoth-pkg/golang/utils"
+	"github.com/BehemothLtd/behemoth-pkg/golang/constants"
+	"github.com/BehemothLtd/behemoth-pkg/golang/cookies"
+	"github.com/BehemothLtd/behemoth-pkg/golang/exceptions"
+	"github.com/BehemothLtd/behemoth-pkg/golang/utils"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"

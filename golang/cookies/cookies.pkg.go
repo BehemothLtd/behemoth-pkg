@@ -1,8 +1,9 @@
 package cookies
 
 import (
-	"behemoth-pkg/golang/utils"
 	"time"
+
+	"github.com/BehemothLtd/behemoth-pkg/golang/utils"
 
 	"github.com/gin-gonic/gin"
 )

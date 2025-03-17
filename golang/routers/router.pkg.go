@@ -1,11 +1,12 @@
 package routers
 
 import (
-	"behemoth-pkg/golang/config"
-	"behemoth-pkg/golang/middlewares"
-	"behemoth-pkg/golang/utils"
 	"log"
 	"net/http"
+
+	"github.com/BehemothLtd/behemoth-pkg/golang/config"
+	"github.com/BehemothLtd/behemoth-pkg/golang/middlewares"
+	"github.com/BehemothLtd/behemoth-pkg/golang/utils"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,10 +1,6 @@
 package uploaders
 
 import (
-	"behemoth-pkg/golang/constants"
-	"behemoth-pkg/golang/exceptions"
-	translator "behemoth-pkg/golang/translators"
-	"behemoth-pkg/golang/utils"
 	"context"
 	"errors"
 	"fmt"
@@ -14,6 +10,11 @@ import (
 	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/BehemothLtd/behemoth-pkg/golang/constants"
+	"github.com/BehemothLtd/behemoth-pkg/golang/exceptions"
+	translator "github.com/BehemothLtd/behemoth-pkg/golang/translators"
+	"github.com/BehemothLtd/behemoth-pkg/golang/utils"
 
 	"cloud.google.com/go/storage"
 	"github.com/gin-gonic/gin"
