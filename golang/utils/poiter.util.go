@@ -1,6 +1,6 @@
 package utils
 
-import gqlScalar "github.com/BehemothLtd/behemoth-pkg/golang/gqlScalars"
+import gqlScalar "github.com/BehemothLtd/behemoth-pkg/golang/gql"
 
 type AllowedTypes interface {
 	int | int32 | uint32 | float64 | string | gqlScalar.Uint32
