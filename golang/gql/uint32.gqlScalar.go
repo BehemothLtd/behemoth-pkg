@@ -1,4 +1,4 @@
-package gqlScalar
+package gql
 
 import (
 	"encoding/json"
