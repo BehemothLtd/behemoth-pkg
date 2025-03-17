@@ -19,11 +19,11 @@ func GqlHandler(repos IRepositories, schema string, resolver *Resolver) gin.Hand
 
 	return func(c *gin.Context) {
 		gqlSchema := graphql.MustParseSchema(schema, resolver, opts...)
-		ginSchemaHandler(gqlSchema)(c)
+		GinSchemaHandler(gqlSchema)(c)
 	}
 }
 
-func ginSchemaHandler(gqlSchema *graphql.Schema) gin.HandlerFunc {
+func GinSchemaHandler(gqlSchema *graphql.Schema) gin.HandlerFunc {
 	handler := &relay.Handler{Schema: gqlSchema}
 
 	return func(c *gin.Context) {
