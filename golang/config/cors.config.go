@@ -11,7 +11,7 @@ import (
 )
 
 func getAllowedDomains() []string {
-	domains := []string{"billiardspro.xyz"}
+	domains := []string{}
 	if customDomains := utils.GetEnv("ALLOWED_DOMAINS", ""); customDomains != "" {
 		domains = append(domains, strings.Split(customDomains, ",")...)
 	}

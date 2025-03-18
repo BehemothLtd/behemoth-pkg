@@ -11,37 +11,6 @@ var (
 		general_pleaseInputCorrect: "Please enter the correct input",
 		general_success:            "Success",
 
-		clubUserRoleType_admin:   "Admin",
-		clubUserRoleType_manager: "Manager",
-		clubUserRoleType_staff:   "Staff",
-
-		// TOURNAMENT GAME TYPE
-		tournamentGameType_10_ball:   "Ten Ball",
-		tournamentGameType_9_ball:    "Nine Ball",
-		tournamentGameType_8_ball:    "Eight Ball",
-		tournamentGameType_3_cushion: "Three Cushion",
-
-		// TOURNAMENT PLAYER TYPE
-		tournamentPlayerType_single: "Singles (1v1)",
-		tournamentPlayerType_double: "Doubles (2v2)",
-		tournamentPlayerType_teams:  "Teams",
-
-		// TOURNAMENTSTAGE STAGE TYPE
-		tournamentStageStageType_single:      "Single Elimination",
-		tournamentStageStageType_double:      "Double Elimination",
-		tournamentStageStageType_round_robin: "Round Robin",
-		tournamentStageStageType_swiss:       "Swiss System",
-
-		// TOURNAMENTSTAGE STAGE TYPE
-		tournamentBracketOrdering_random: "Random draw",
-		tournamentBracketOrdering_manual: "Set order",
-		tournamentBracketOrdering_seed:   "Seeded draw",
-
-		// Tournament player status
-		tournamentPlayerStatus_pending:  "Pending",
-		tournamentPlayerStatus_approved: "Approved",
-		tournamentPlayerStatus_denied:   "Denied",
-
 		// TOURNAMENT STATE STATUS
 		tournamentState_publish:   "Published",
 		tournamentState_unpublish: "Unpublish",
@@ -95,18 +64,5 @@ var (
 		errDbMsg_notFound:      "Not Found",
 		errDbMsg_unexpected:    "Unexpected DB Error",
 		errDbMsg_wrongPassword: "Wrong Username Or Password",
-
-		// Tournament table
-		Title:         "Title",
-		LiveStreamUrl: "Live Stream Url",
-		StartNumber:   "Start Number",
-		EndNumber:     "End Number",
-
-		// Tournament player
-		TournamentPlayersFull:             "Tournament is full",
-		TournamentPlayerAlreadyRegistered: "Player already registered",
-
-		// Tournament Manager
-		ErrTournamentManagerExists: "The manager does not exist in the club:%d",
 	}
 )

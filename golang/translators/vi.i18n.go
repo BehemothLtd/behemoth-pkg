@@ -11,41 +11,6 @@ var (
 		general_pleaseInputCorrect: "Vui lòng nhập thông tin chính xác",
 		general_success:            "Thành công",
 
-		// CLUB USER ROLE
-		clubUserRoleType_admin:   "Quản Trị Viên",
-		clubUserRoleType_manager: "Quản lý",
-		clubUserRoleType_staff:   "Nhân viên",
-
-		// TOURNAMENT GAME TYPE
-		tournamentGameType_10_ball:   "Bi-a 10 bóng",
-		tournamentGameType_9_ball:    "Bi-a 9 bóng",
-		tournamentGameType_8_ball:    "Bi-a 8 bóng",
-		tournamentGameType_3_cushion: "Carom ba băng",
-
-		// TOURNAMENT PLAYER TYPE
-		tournamentPlayerType_single: "Đơn (1v1)",
-		tournamentPlayerType_double: "Đôi (2v2)",
-		tournamentPlayerType_teams:  "Đội nhóm",
-
-		// TOURNAMENTSTAGE STAGE TYPE
-		tournamentStageStageType_single:      "Loại trực tiếp",
-		tournamentStageStageType_double:      "Đấu hai lần loại",
-		tournamentStageStageType_round_robin: "Vòng tròn",
-		tournamentStageStageType_swiss:       "Hệ Thụy Sĩ",
-
-		tournamentBracketOrdering_random: "Bốc thăm ngẫu nhiên",
-		tournamentBracketOrdering_manual: "Sắp xếp thủ công",
-		tournamentBracketOrdering_seed:   "Bốc thăm theo hạt giống",
-
-		// Tournament player status
-		tournamentPlayerStatus_pending:  "Chờ xác nhận",
-		tournamentPlayerStatus_approved: "Đã xác nhận",
-		tournamentPlayerStatus_denied:   "Đã từ chối",
-
-		// TOURNAMENT STATE STATUS
-		tournamentState_publish:   "Đã công bố",
-		tournamentState_unpublish: "Chưa công bố",
-
 		// INFO MESSAGES
 		infoMsg_signInSuccess:  "Đăng Nhập Thành Công",
 		infoMsg_signOutSuccess: "Đăng Xuất Thành Công",
@@ -97,19 +62,5 @@ var (
 		errDbMsg_notFound:      "Không tìm được",
 		errDbMsg_unexpected:    "Lỗi DB không mong đợi",
 		errDbMsg_wrongPassword: "Tên người dùng hoặc mật khẩu không chính xác",
-
-		// Tournament table
-		Title:         "Tên Bàn",
-		LiveStreamUrl: "URL phát trực tiếp",
-		StartNumber:   "Số bắt đầu",
-		EndNumber:     "Số kết thúc",
-
-		// Tournament player
-		TournamentPlayersFull:             "Vượt quá số lượng người chơi",
-		TournamentPlayerAlreadyRegistered: "Người chơi đã được đăng ký trước đó",
-
-		// Tournament Manager
-		ErrTournamentManagerExists: "Người quản lý đã tồn tại: %d",
-		ExternalClubUserIDs:        "Người quản lý không tồn tại trong câu lạc bộ: %d",
 	}
 )
