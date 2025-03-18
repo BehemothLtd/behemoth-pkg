@@ -15,7 +15,7 @@ import (
 // Dsn generates the PostgreSQL connection string.
 func Dsn() string {
 	return fmt.Sprintf(
-		"host=%s user=%s dbname=%s port=%s search_path=%s sslmode=%s TimeZone=Asia/Ho_Chi_Minh password=%s",
+		"host=%s user=%s dbname=%s search_path=%s port=%s sslmode=%s TimeZone=Asia/Ho_Chi_Minh password=%s",
 		utils.GetEnv("DB_HOST", "localhost"),
 		utils.GetEnv("DB_USER", "postgres"),
 		utils.GetEnv("DB_NAME", "billiard-community-dev"),
