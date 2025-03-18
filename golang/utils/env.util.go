@@ -20,3 +20,7 @@ func IsDevelopmentEnv() bool {
 func IsProductionEnv() bool {
 	return GetEnv("APP_ENV", "development") == "production"
 }
+
+func AppName() string {
+	return GetEnv("APP_NAME", "golang-app")
+}
