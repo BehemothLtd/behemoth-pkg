@@ -38,7 +38,7 @@ func InitLogger(appName string) {
 		zerolog.SetGlobalLevel(zerolog.DebugLevel)
 	}
 
-	if utils.IsLocalEnv() {
+	if utils.IsLocalEnv() || utils.IsDevelopmentEnv() {
 		log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 	} else {
 		writer := &loggers.InfoDebugWriter{
