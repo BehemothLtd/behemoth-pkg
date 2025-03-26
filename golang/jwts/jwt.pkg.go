@@ -16,7 +16,9 @@ type JwtClaim struct {
 	jwt.RegisteredClaims
 }
 
-var jwtSecret = []byte(utils.GetEnv("JWT_SECRET_KEY", "secret"))
+func JwtSecret() []byte {
+	return []byte(utils.GetEnv("JWT_SECRET_KEY", "J!N)*a6h(?;=EHXyQ3fb8dKc}jXW"))
+}
 
 // JwtTokenCheckAndSetToCtx extracts JWT from cookie, validates it, and sets user info in context.
 func JwtTokenCheckAndSetToCtx(c *gin.Context, target string) {
@@ -54,13 +56,13 @@ func ParseToken(jwtToken string) (*JwtClaim, error) {
 // GenerateJwtToken creates a signed JWT token.
 func GenerateJwtToken(claims jwt.Claims) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	return token.SignedString(jwtSecret)
+	return token.SignedString(JwtSecret())
 }
 
 // DecodeJwtToken validates and extracts claims from a JWT token.
 func DecodeJwtToken(tokenString string, userClaim jwt.Claims) error {
 	token, err := jwt.ParseWithClaims(tokenString, userClaim, func(token *jwt.Token) (interface{}, error) {
-		return jwtSecret, nil
+		return JwtSecret(), nil
 	})
 	if err != nil || !token.Valid {
 		return exceptions.NewBadRequestError(nil)
