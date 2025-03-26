@@ -58,7 +58,7 @@ func GenerateJwtToken(claims jwt.Claims) (string, error) {
 }
 
 // DecodeJwtToken validates and extracts claims from a JWT token.
-func DecodeJwtToken(tokenString string, userClaim *JwtClaim) error {
+func DecodeJwtToken(tokenString string, userClaim jwt.Claims) error {
 	token, err := jwt.ParseWithClaims(tokenString, userClaim, func(token *jwt.Token) (interface{}, error) {
 		return jwtSecret, nil
 	})
