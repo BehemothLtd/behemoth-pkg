@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"math"
 	"strconv"
+
+	"github.com/rs/zerolog/log"
 )
 
 type Float32 float32
@@ -19,7 +21,7 @@ func (f *Float32) UnmarshalGraphQL(input interface{}) error {
 	case float32:
 		*f = Float32(v)
 	case float64:
-		if v < -math.MaxFloat64 || v > math.MaxFloat64 {
+		if v < -math.MaxFloat32 || v > math.MaxFloat32 {
 			return fmt.Errorf("value out of range for float32")
 		}
 		*f = Float32(v)
@@ -32,9 +34,14 @@ func (f *Float32) UnmarshalGraphQL(input interface{}) error {
 	case int32:
 		*f = Float32(v)
 	case int64:
-		if v < math.MinInt64 || v > math.MaxInt64 {
+		if float64(v) < -math.MaxFloat32 || float64(v) > math.MaxFloat32 {
 			return fmt.Errorf("value out of range for float32")
 		}
+
+		if v < -16777216 || v > 16777216 {
+			log.Warn().Int64("value", v).Msg("Warning: value may lose precision in float32")
+		}
+
 		*f = Float32(v)
 	case uint8:
 		*f = Float32(v)
@@ -43,9 +50,14 @@ func (f *Float32) UnmarshalGraphQL(input interface{}) error {
 	case uint32:
 		*f = Float32(v)
 	case uint64:
-		if v > ^uint64(0) {
+		if float64(v) > float64(math.MaxFloat32) {
 			return fmt.Errorf("value out of range for float32")
 		}
+
+		if v > 16777216 {
+			log.Warn().Uint64("value", v).Msg("Warning: value may lose precision in float32")
+		}
+
 		*f = Float32(v)
 	case json.Number:
 		val, err := v.Float64()
