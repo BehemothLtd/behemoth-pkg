@@ -39,13 +39,13 @@ func ExtractAndReadFromCookie(c *gin.Context, key string) (*JwtClaim, error) {
 	if err != nil {
 		return nil, err
 	}
-	return parseToken(token)
+	return ParseToken(token)
 }
 
-// parseToken decodes and validates a JWT token.
-func parseToken(jwtToken string) (*JwtClaim, error) {
+// ParseToken decodes and validates a JWT token.
+func ParseToken(jwtToken string) (*JwtClaim, error) {
 	var jwtClaim JwtClaim
-	if err := decodeJwtToken(jwtToken, &jwtClaim); err != nil {
+	if err := DecodeJwtToken(jwtToken, &jwtClaim); err != nil {
 		return nil, exceptions.NewBadRequestError(nil)
 	}
 	return &jwtClaim, nil
@@ -57,8 +57,8 @@ func GenerateJwtToken(claims jwt.Claims) (string, error) {
 	return token.SignedString(jwtSecret)
 }
 
-// decodeJwtToken validates and extracts claims from a JWT token.
-func decodeJwtToken(tokenString string, userClaim *JwtClaim) error {
+// DecodeJwtToken validates and extracts claims from a JWT token.
+func DecodeJwtToken(tokenString string, userClaim *JwtClaim) error {
 	token, err := jwt.ParseWithClaims(tokenString, userClaim, func(token *jwt.Token) (interface{}, error) {
 		return jwtSecret, nil
 	})
