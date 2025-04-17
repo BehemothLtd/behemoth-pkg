@@ -24,12 +24,12 @@ type Metadata struct {
 	To      uint32
 }
 
-type PaginationData struct {
+type PaginationData[T any] struct {
 	Metadata   Metadata
-	Collection interface{}
+	Collection T
 }
 
-func Paginate(ctx context.Context, db *gorm.DB, p *PaginationData, tableName string) (func(db *gorm.DB) *gorm.DB, error) {
+func Paginate[T any](ctx context.Context, db *gorm.DB, p *PaginationData[T], tableName string) (func(db *gorm.DB) *gorm.DB, error) {
 	log.Debug().Ctx(ctx).Msg("pagination.Paginate")
 
 	// Create a new session to avoid side effects
@@ -37,7 +37,9 @@ func Paginate(ctx context.Context, db *gorm.DB, p *PaginationData, tableName str
 
 	// Calculate the total number of records
 	var totalRecords uint32
-	dbClone.Select(fmt.Sprintf("COUNT(DISTINCT %s.id)", tableName)).Scan(&totalRecords)
+	if err := dbClone.Select(fmt.Sprintf("COUNT(DISTINCT %s.id)", tableName)).Scan(&totalRecords).Error; err != nil {
+		return nil, err
+	}
 
 	// Update pagination metadata
 	p.Metadata.Total = totalRecords
