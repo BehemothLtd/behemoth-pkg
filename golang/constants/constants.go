@@ -26,13 +26,19 @@ const (
 	DefaultJwtTokenExpiration        = 15 * time.Hour // short expiration time: 15 mins
 	DefaultJwtRefreshTokenExpiration = 7 * time.Hour  // long expiration time: 7 days
 	HHMM_TimeFormat                  = "15:04"
+	YYYYMMDD_DateFormat              = "2006-01-02"
 	YYYYMMDD_HHMM_DateTimeFormat     = "2006-01-02 15:04"
+	YYYYMMDD_HHMMSS_DateTimeFormat   = "2006-01-02 15:04:05"
 )
 
 const (
 	// Lengths
-	MaxLength30     = 30
-	MaxStringLength = 255
+	MaxHalfLengthName = 10
+	MaxLength20       = 20
+	MaxLength30       = 30
+	MaxLength50       = 50
+	MaxLength100      = 100
+	MaxStringLength   = 255
 
 	MinPasswordLength = 8
 	MaxPasswordLength = 72
