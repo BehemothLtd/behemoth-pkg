@@ -26,7 +26,7 @@ type Metadata struct {
 
 type PaginationData struct {
 	Metadata   Metadata
-	Collection interface{}
+	Collection any
 }
 
 func Paginate(ctx context.Context, db *gorm.DB, p *PaginationData, tableName string) (func(db *gorm.DB) *gorm.DB, error) {
@@ -39,36 +39,47 @@ func Paginate(ctx context.Context, db *gorm.DB, p *PaginationData, tableName str
 	var totalRecords uint32
 	dbClone.Select(fmt.Sprintf("COUNT(DISTINCT %s.id)", tableName)).Scan(&totalRecords)
 
-	// Update pagination metadata
-	p.Metadata.Total = totalRecords
-	p.Metadata.Pages = uint32(math.Max(1, math.Ceil(float64(totalRecords)/float64(p.Metadata.PerPage))))
-
-	// Adjust current page if it exceeds the last page
-	if p.Metadata.Page > p.Metadata.Pages {
-		return nil, exceptions.NewUnprocessableContentError(translator.Translate(nil, "errValidation_pagingOverflow"), nil)
+	// Update pagination metadata using the new method
+	offset, err := p.Metadata.Calculate(totalRecords)
+	if err != nil {
+		return nil, err
 	}
-
-	// Update navigation metadata
-	if p.Metadata.Page > 1 {
-		p.Metadata.Prev = p.Metadata.Page - 1
-	}
-	if p.Metadata.Page < p.Metadata.Pages {
-		p.Metadata.Next = p.Metadata.Page + 1
-	}
-
-	// Calibrate the count for the current page
-	p.Metadata.Count = p.Metadata.PerPage
-	if p.Metadata.Page == p.Metadata.Pages {
-		p.Metadata.Count = uint32(totalRecords) - (p.Metadata.PerPage * (p.Metadata.Page - 1))
-	}
-
-	// Calculate offset and range
-	offset := p.Metadata.PerPage * (p.Metadata.Page - 1)
-	p.Metadata.From, p.Metadata.To = calculateRange(offset, p.Metadata.Count, totalRecords)
 
 	return func(db *gorm.DB) *gorm.DB {
 		return db.Offset(int(offset)).Limit(int(p.Metadata.PerPage))
 	}, nil
+}
+
+func (meta *Metadata) Calculate(totalRecords uint32) (uint32, error) {
+	meta.Total = totalRecords
+	meta.Pages = uint32(math.Max(1, math.Ceil(float64(totalRecords)/float64(meta.PerPage))))
+
+	// Adjust current page if it exceeds the last page
+	if meta.Page > meta.Pages {
+		return 0, exceptions.NewUnprocessableContentError(translator.Translate(nil, "errValidation_pagingOverflow"), nil)
+	}
+
+	// Update navigation metadata
+	meta.Prev = 0
+	meta.Next = 0
+	if meta.Page > 1 {
+		meta.Prev = meta.Page - 1
+	}
+	if meta.Page < meta.Pages {
+		meta.Next = meta.Page + 1
+	}
+
+	// Calibrate the count for the current page
+	meta.Count = meta.PerPage
+	if meta.Page == meta.Pages {
+		meta.Count = uint32(totalRecords) - (meta.PerPage * (meta.Page - 1))
+	}
+
+	// Calculate offset and range
+	offset := meta.PerPage * (meta.Page - 1)
+	meta.From, meta.To = calculateRange(offset, meta.Count, totalRecords)
+
+	return offset, nil
 }
 
 // Helper function to calculate the range of items for the pagination metadata
