@@ -2,6 +2,8 @@ package exceptions
 
 import (
 	"fmt"
+
+	translator "github.com/BehemothLtd/behemoth-pkg/golang/translators"
 )
 
 const (
@@ -33,7 +35,7 @@ func NewUnauthorizedError(message *string) *UnauthorizedError {
 	var returnMessage string
 
 	if message == nil || *message == "" {
-		returnMessage = "errExceptionMsg_unauthorized"
+		returnMessage = translator.Translate(nil, "errExceptionMsg_unauthorized")
 	} else {
 		returnMessage = *message
 	}
